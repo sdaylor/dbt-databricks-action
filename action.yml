@@ -1,0 +1,24 @@
+name: "dbt-databricks-action"
+description: "A GitHub Action to run dbt commands against Databricks in a Docker container."
+author: "Sean Daylor"
+
+inputs:
+  dbt_command:
+    description: "command"
+    default: "dbt run"
+    required: true
+  dbt_project_folder:
+    description: "dbt project folder. Defaults to ."
+    default: "."
+    required: false
+outputs:
+  result:
+    description: "Success or failure of the dbt command"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.dbt_command }}
+branding:
+  icon: "code"
+  color: "red"
