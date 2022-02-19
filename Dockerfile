@@ -21,6 +21,8 @@ RUN pip3 install --no-cache-dir \
 	dbt-spark[ODBC]~=0.20.2 \
 	pyodbc~=4.0.32
 
+RUN pip3 install --force-reinstall MarkupSafe==2.0.1
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
